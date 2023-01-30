@@ -8,6 +8,12 @@
         :options="chartOptions"
         :series="itemDetailStore.get_transaction_by_category"
       ></VueApexCharts>
+      <p class="text-danger" v-if="itemDetailStore.withdrawal_sum > 0">
+        Withdrawal : {{ itemDetailStore.withdrawal_sum }}
+      </p>
+      <p class="text-success" v-if="itemDetailStore.deposite_sum > 0">
+        deposite : {{ itemDetailStore.deposite_sum }}
+      </p>
     </div>
   </div>
 </template>

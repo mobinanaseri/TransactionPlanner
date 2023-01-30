@@ -104,6 +104,13 @@ export default {
         amount: this.itemAmount,
         amountType: this.picked,
       });
+
+      if (this.picked == "-") {
+        this.itemDetailStore.withdrawal_sum += this.itemAmount;
+      } else {
+        this.itemDetailStore.deposite_sum += this.itemAmount;
+      }
+
       this.toast.success("item added successfully");
       this.category = "";
       this.itemAmount = 0;

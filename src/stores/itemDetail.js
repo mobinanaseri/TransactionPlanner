@@ -5,6 +5,8 @@ export const useItemDetailStore = defineStore("itemDetail", {
         return {
             transactionList: [],
             transactionGroupByCategory: {},
+            withdrawal_sum: 0,
+            deposite_sum: 0,
         };
     },
     getters: {

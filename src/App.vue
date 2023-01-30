@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// import Item from "./components/item.vue";
 import LeftSidebar from "./components/LeftSidebar.vue";
 import RightSidebar from "./components/rightSidebar.vue";
 export default {
