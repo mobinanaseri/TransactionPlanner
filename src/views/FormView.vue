@@ -67,12 +67,15 @@
 </template>
 
 <script>
+import { useToast } from "vue-toastification";
 import { useItemDetailStore } from "../stores/itemDetail";
 export default {
   setup() {
     let itemDetailStore = useItemDetailStore();
+    const toast = useToast();
     return {
       itemDetailStore,
+      toast,
     };
   },
   data() {
@@ -84,28 +87,35 @@ export default {
   },
   methods: {
     addItem() {
+      if (this.itemAmount == 0) {
+        this.toast.error("please fill the required fields");
+        return;
+      }
+      if (this.category == "") {
+        this.toast.error("please fill the required fields");
+        return;
+      }
+      if (this.picked == "") {
+        this.toast.error("please fill the required fields");
+        return;
+      }
       this.itemDetailStore.transactionList.push({
         title: this.category,
         amount: this.itemAmount,
         amountType: this.picked,
       });
+      this.toast.success("item added successfully");
       this.category = "";
       this.itemAmount = 0;
       this.picked = "";
 
-      const result = this.itemDetailStore.transactionList.reduce(
-        (group, item) => {
+      this.itemDetailStore.transactionGroupByCategory =
+        this.itemDetailStore.transactionList.reduce((group, item) => {
           const { title } = item;
           group[title] = group[title] != null ? group[title] : [];
           group[title].push(item);
           return group;
-        },
-        {}
-      );
-      let series = Object.values(result).reduce((acc, item) => {
-        acc.push(item.length);
-        return acc;
-      }, []);
+        }, {});
     },
   },
 };

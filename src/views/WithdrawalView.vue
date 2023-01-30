@@ -1,11 +1,11 @@
 <template>
-  <div class="item d-flex flex-column mt-4">
+  <div class="item d-flex flex-column mt-4 bg-light">
     <div
       v-for="(item, index) in WithdrawalItems"
       :key="index"
       class="col-sm-12 col-lg-10 mb-1 mx-5 mt-3"
     >
-      <div class="border border-1 rounded-4 p-1 bg-light d-flex">
+      <div class="border border-1 rounded-4 p-1 d-flex w-item">
         <figure class="p-2 mb-0">
           <blockquote class="blockquote d-flex">
             <h4 class="mx-3">{{ item.title }}</h4>

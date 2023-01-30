@@ -1,12 +1,12 @@
 <template>
-  <div class="col-3 rtl-sidebar d-flex flex-column text-bg-dark">
-    <div>
+  <div class="col-3 rtl-sidebar d-flex flex-column text-bg-light border-start">
+    <div class="mt-5">
       <VueApexCharts
         class="mt-4"
         width="350"
         type="pie"
         :options="chartOptions"
-        :series="series"
+        :series="itemDetailStore.get_transaction_by_category"
       ></VueApexCharts>
     </div>
   </div>

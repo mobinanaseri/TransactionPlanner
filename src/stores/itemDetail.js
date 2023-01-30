@@ -4,6 +4,16 @@ export const useItemDetailStore = defineStore("itemDetail", {
     state: () => {
         return {
             transactionList: [],
+            transactionGroupByCategory: {},
         };
+    },
+    getters: {
+        get_transaction_by_category(state) {
+            let list = [];
+            Object.values(state.transactionGroupByCategory).forEach((tranaction) => {
+                list.push(tranaction.length);
+            });
+            return list;
+        },
     },
 });

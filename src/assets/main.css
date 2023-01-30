@@ -84,3 +84,9 @@ main {
 li {
     padding-top: 20px;
 }
+
+.item,
+.d-item,
+.w-item {
+    background-color: white;
+}
